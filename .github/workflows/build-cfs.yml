@@ -80,7 +80,7 @@ jobs:
     steps:
     
       - name: check defs
-      - run: echo ENABLE_UNIT_TESTS = $ENABLE_UNIT_TESTS
+        run: echo ENABLE_UNIT_TESTS = $ENABLE_UNIT_TESTS
       
       - name: Install Dependencies
         run: sudo apt-get install lcov -y
@@ -124,7 +124,7 @@ jobs:
     steps:
 
       - name: check defs
-      - run: echo ENABLE_UNIT_TESTS = $ENABLE_UNIT_TESTS    
+        run: echo ENABLE_UNIT_TESTS = $ENABLE_UNIT_TESTS    
     
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
