@@ -1,4 +1,4 @@
-name: Build and Test rtems 5 sparc [OMIT_DEPRECATED=true]
+name: Build and Test rtems 5 SPARC [OMIT_DEPRECATED=true]
 
 # Run every time a new commit pushed or for pull requests
 on:
@@ -35,7 +35,7 @@ jobs:
     if: ${{ needs.check-for-duplicates.outputs.should_skip != 'true' }}
     name: Build
     runs-on: ubuntu-22.04
-    container: ghcr.io/core-flight-system/qemu-rtems-5:latest
+    container: ghcr.io/pepepr08/qemu-rtems-5-sparc:latest
 
     strategy:
       fail-fast: false
@@ -75,7 +75,7 @@ jobs:
   test-cfs:
     name: Test
     runs-on: ubuntu-22.04
-    container: ghcr.io/core-flight-system/qemu-rtems-5:latest
+    container: ghcr.io/pepepr08/qemu-rtems-5-sparc:latest
 
     needs: build-cfs
 
