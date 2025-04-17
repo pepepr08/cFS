@@ -10,7 +10,8 @@ ALL_FUNC_TEST_EXES := $(shell ls $(INSTALL_DIR)/$(CPUNAME)/*test.exe)
 ifeq ($(SKIP_NET_TESTS), true)
 	SKIP_FUNC_TEST := 	\
 		$(INSTALL_DIR)/$(CPUNAME)/network-api-test.exe	\
-		$(INSTALL_DIR)/$(CPUNAME)/select-test.exe
+		$(INSTALL_DIR)/$(CPUNAME)/select-test.exe \
+		$(INSTALL_DIR)/$(CPUNAME)/timer-test.exe
 	ALL_FUNC_TEST_EXES := $(filter-out $(SKIP_FUNC_TEST),$(ALL_FUNC_TEST_EXES))
 endif
 

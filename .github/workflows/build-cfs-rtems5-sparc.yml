@@ -63,7 +63,7 @@ jobs:
           cp /root/bsp_rtems_cfg.h sample_defs/
           cp /root/toolchain-leon3-rtems5.cmake sample_defs/
           cp /root/psp.diff psp/
-          cd psp && git apply psp.diff
+          cd psp && git apply psp.diff && cd ..
 
       # Setup the build system
       - name: Make Prep
@@ -108,7 +108,7 @@ jobs:
           cp /root/bsp_rtems_cfg.h sample_defs/
           cp /root/toolchain-leon3-rtems5.cmake sample_defs/
           cp /root/psp.diff psp/
-          cd psp && git apply psp.diff
+          cd psp && git apply psp.diff && cd ..
 
       # Setup the build system
       - name: Make
@@ -118,7 +118,7 @@ jobs:
 
       - name: Test
         #run: .github/scripts/qemu_test.sh && .github/scripts/log_failed_tests.sh
-        run: make O=build SKIP_NET_TESTS=true RTEMS_VERSION=leon3-rtems5 QEMU_COMMAND="qemu-system-sparc -m 128" -f .github/scripts/rtems-test.mk all_tests -k
+        run: make O=build SKIP_NET_TESTS=true RTEMS_VERSION=leon3-rtems5 QEMU_COMMAND="qemu-system-sparc -m 128 -M leon3_generic" -f .github/scripts/rtems-test.mk all_tests -k
 
       - name: Output Failed Tests
         run: |

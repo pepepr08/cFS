@@ -39,8 +39,6 @@ run: $(CFE_DISK_IMG)
 	$(QEMU_COMMAND) -display none -no-reboot -serial mon:stdio \
 	    -kernel $(INSTALL_DIR)/$(CPUNAME)/$(KERNEL_NAME).exe \
 	    -drive file=$(CFE_DISK_IMG),format=raw \
-    	-device i82557b,netdev=net0,mac=$(MACADDR) \
-	    -netdev user,id=net0,hostfwd=udp:127.0.0.1:1235-:1235 \
 			-append '--console=/dev/com1'
 
 clean_img:
@@ -54,8 +52,6 @@ clean_img:
 	    -kernel $(<) \
 	    -append '--batch-mode --console=/dev/com1' \
 	    -drive file=$(*).cow,format=qcow2 \
-	    -device i82557b,netdev=net0,mac=$(MACADDR) \
-	    -netdev user,id=net0 \
 	    -serial file:$(@).tmp
 	@mv -v $(@).tmp $(@)
 
